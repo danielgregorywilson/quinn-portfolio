@@ -1,0 +1,8 @@
+<ul class="images">
+  <li class="galleryImage" *ngFor="let image of galleryContent">
+    <p class="galleryImage">
+        {{image.fileName}}
+      <img src="assets/images/{{ image.path }}{{image.fileName | thumb}}" />
+    </p>
+  </li>
+</ul>
