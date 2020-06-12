@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 
 import { ImageThumbnailPipe } from './image-thumbnail.pipe';
 
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ImageThumbnailPipe } from './image-thumbnail.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxMasonryModule,
   ],
   providers: [GalleryService],
   bootstrap: [AppComponent]
