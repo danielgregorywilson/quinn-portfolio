@@ -1,0 +1,48 @@
+<p>
+  This is the gallery page! Here are all the cool things that I've made. You
+  should give me money because I can do more of it and things.
+</p>
+<div class="masonryGrid">
+  <ngx-masonry [options]="masonryOptions">
+    <div
+      ngxMasonryItem
+      class="masonry-item"
+      *ngFor="let image of galleryContent"
+    >
+      <div class="gallery-item">
+        <ng-container [ngSwitch]="image.thumbnail.type">
+          <img
+            [src]="image.thumbnail.imagePath"
+            *ngSwitchCase="'image'"
+            width="400"
+          />
+
+          <div class="flip-box" *ngSwitchCase="'flip-image'">
+            <div class="flip-box-inner">
+              <div class="flip-box-front">
+                <img [src]="image.thumbnail.frontImagePath" width="400" />
+              </div>
+              <div class="flip-box-back">
+                <img [src]="image.thumbnail.backImagePath" width="400" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="gallery-item-x-info">
+          <div class="gallery-item-x-info-title" *ngIf="image.pieceTitle">
+            {{ image.pieceTitle }} - {{ image.creationDate }}
+          </div>
+          <caption class="gallery-item-x-info-title" *ngIf="image.caption">
+            {{
+              image.caption
+            }}
+          </caption>
+        </div>
+      </div>
+    </div>
+  </ngx-masonry>
+</div>
+<p>
+  bar
+</p>
