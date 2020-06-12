@@ -1,1 +1,247 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Life+Savers');
+
+/// Test if `$value` is a valid direction
+/// @param {*} $value - Value to test
+/// @return {Bool}
+@function is-direction($value) {
+    $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+    $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+    @return $is-keyword or $is-angle;
+  }
+
+/// Mixin printing a linear-gradient
+/// as well as a plain color fallback
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {Keyword | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+
+/// Convert a direction to legacy syntax
+/// @param {Keyword | Angle} $value - Value to convert
+/// @require {function} is-direction
+/// @require {function} convert-angle
+/// @throw Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.;
+@function legacy-direction($value) {
+    @if is-direction($value) == false {
+      @error "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.";
+    }
+
+    $conversion-map: (
+      to top          : bottom,
+      to top right    : bottom left,
+      to right top    : left bottom,
+      to right        : left,
+      to bottom right : top left,
+      to right bottom : left top,
+      to bottom       : top,
+      to bottom left  : top right,
+      to left bottom  : right top,
+      to left         : right,
+      to left top     : right bottom,
+      to top left     : bottom right
+    );
+
+    @if map-has-key($conversion-map, $value) {
+      @return map-get($conversion-map, $value);
+    }
+
+    @return 90deg - $value;
+  }
+
+
+@mixin linear-gradient($direction, $color-stops...) {
+    // Direction has been omitted and happens to be a color-stop
+    @if is-direction($direction) == false {
+      $color-stops: $direction, $color-stops;
+      $direction: 180deg;
+    }
+
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+  }
+
+div.container.dark{
+    @include linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 5%);
+    h1{
+        color: white;
+        hr{
+            color: #555; /* old IE */
+            background-color: #555; /* Modern Browsers */
+        }
+    }
+}
+div.container.midtone{
+    @include linear-gradient(180deg, hsl(0, 0, 20%) 0%, hsl(0, 0, 20%) 5%);
+    h1{
+        color: white;
+        hr{
+            color: #555; /* old IE */
+            background-color: #555; /* Modern Browsers */
+        }
+    }
+}
+div.masonryGrid{
+    position: relative;
+    width: 100%;
+    text-align: center;
+
+    & > * {
+      margin: auto;
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    img.logo {
+        height: 75px;
+    }
+}
+
+:root {
+    --transition-duration: 300ms;
+    --grid: 8px;
+    --grid2: calc(var(--grid) * 2);
+    --masonryItemWidth: max(300px, 25vw);
+}
+
+.secondaryNav{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    > a {
+        text-align: right;
+        padding: calc(var(--grid) / 2);
+        padding-right: var(--grid);
+        cursor: pointer;
+        user-select: none;
+        transition: background var(--transition-duration) ease-in-out,
+                    color var(--transition-duration) ease-in-out;
+
+        &:hover {
+            background: #000;
+            color: #FFF;
+        }
+    }
+}
+h1{
+    font-family: 'Life Savers', cursive;
+    display: inline-block;
+    height: 75px;
+    hr{
+        width: 100%;
+        border: none;
+        height: 4px;
+        margin: 5px 0px;
+        /* Set the hr color */
+        color: #333; /* old IE */
+        background-color: #333; /* Modern Browsers */
+    }
+}
+
+// GALLERY
+
+.masonry-item {
+    line-height: 0;
+    img{
+       width: var(--masonryItemWidth);
+    }
+}
+
+.gallery-item {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: var(--grid);
+    cursor: pointer;
+
+    .gallery-item-x-info {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background: rgba(0,0,0,0.75);
+        color: white;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        transform: translateY(100%);
+        transition: transform var(--transition-duration) ease-in-out;
+
+        font-size: 16px;
+        line-height: 18px;
+
+        * {
+            padding: var(--grid);
+            padding-top: var(--grid2);
+            text-align: left;
+
+            &:last-child {
+                padding-bottom: var(--grid2);
+            }
+        }
+    }
+
+    &:hover .gallery-item-x-info {
+        transform: translateY(0%);
+    }
+}
+
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box {
+    background-color: transparent;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
+
+    /* This container is needed to position the front and back side */
+    .flip-box-inner {
+        position: relative;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    &:hover .flip-box-inner {
+        transform: rotateY(180deg);
+    }
+
+    /* Position the front and back side */
+    .flip-box-front {
+        //position: absolute;
+        backface-visibility: hidden;
+    }
+
+    .flip-box-back {
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+    }
+
+    /* Style the front side (fallback if image is missing) */
+    .flip-box-front {
+        background-color: #bbb;
+        color: black;
+        transform: rotateY(180deg);
+    }
+
+    /* Style the back side */
+    .flip-box-back {
+        background-color: dodgerblue;
+        color: white;
+    }
+}

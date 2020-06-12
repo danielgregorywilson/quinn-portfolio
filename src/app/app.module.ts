@@ -1,18 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { GalleryComponent } from './gallery/gallery.component';
+import { GalleryService } from './gallery.service';
+import { ContactComponent } from './contact/contact.component';
+
+import { ImageThumbnail } from './pipes/image-thumbnail.pipe';
+import { NgxMasonryModule } from 'ngx-masonry';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactComponent,
+    GalleryComponent,
+    ImageThumbnail
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxMasonryModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [GalleryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
