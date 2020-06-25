@@ -9,6 +9,7 @@ import { GalleryService } from './gallery.service';
 import { ContactComponent } from './contact/contact.component';
 
 import { ImageThumbnail } from './pipes/image-thumbnail.pipe';
+import { LightboxModule } from 'ngx-lightbox';
 import { NgxMasonryModule } from 'ngx-masonry';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,10 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ImageThumbnail
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    NgxMasonryModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BrowserModule,
+    LightboxModule,
+    NgxMasonryModule
   ],
   providers: [GalleryService],
   bootstrap: [AppComponent]

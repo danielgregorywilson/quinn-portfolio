@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {GalleryService, imageData} from '../gallery.service';
+import { Lightbox } from 'ngx-lightbox';
 import { NgxMasonryOptions } from 'ngx-masonry';
+
 
 @Component({
   selector: 'app-gallery',
@@ -16,7 +18,7 @@ export class GalleryComponent implements OnInit {
     fitWidth: true
   };
 
-  constructor(public galleryManager: GalleryService) {
+  constructor(public galleryManager: GalleryService, private _lightbox: Lightbox) {
     this.searchImages('');
     console.log(this.galleryContent);
   }
@@ -29,6 +31,11 @@ export class GalleryComponent implements OnInit {
 
 
     this.galleryContent = this.galleryManager.images
+  }
+
+  openLightbox(index: number): void {
+    // Open lightbox
+    this._lightbox.open(this.galleryContent, index)
   }
 
   ngOnInit() {

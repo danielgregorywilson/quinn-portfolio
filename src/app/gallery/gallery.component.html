@@ -7,9 +7,9 @@
     <div
       ngxMasonryItem
       class="masonry-item"
-      *ngFor="let image of galleryContent"
+      *ngFor="let image of galleryContent; let i=index"
     >
-      <div class="gallery-item">
+      <div class="gallery-item" (click)="openLightbox(i)">
         <ng-container [ngSwitch]="image.thumbnail.type">
           <img
             [src]="image.thumbnail.imagePath"
