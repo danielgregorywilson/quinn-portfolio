@@ -1,7 +1,18 @@
-<p>
+<p style="color: white">
   This is the gallery page! Here are all the cool things that I've made. You
   should give me money because I can do more of it and things.
 </p>
+<div class="filters">
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <mat-select [(value)]="selectedCategoryValue" (selectionChange)="filterAndSortImages()">
+      <mat-option *ngFor="let category of categories" [value]="category.value">
+        {{ category.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
 <div class="masonryGrid">
   <ngx-masonry [options]="masonryOptions">
     <div
