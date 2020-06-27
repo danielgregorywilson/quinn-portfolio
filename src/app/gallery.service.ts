@@ -57,8 +57,9 @@ const images: imageData[] = [
   {
     src: "../assets/images/design/ruth_logo_standalone_fordark.svg",
     thumbnail: {
-      type: "image",
-      imagePath: "../assets/images/design/ruth_logo_standalone_thumb.png"
+      type: "flip-image",
+      frontImagePath: "../assets/images/design/ruth_logo_standalone.png",
+      backImagePath: "../assets/images/design/ruth_logo_standalone_fordark.png"
     },
     thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
     "pieceTitle": "Camilla Kaplan Logo",
@@ -74,10 +75,11 @@ const images: imageData[] = [
     "caption": ""
   },
   {
-    src: "../assets/images/design/magical_seams_logo.png",
+    src: "../assets/images/design/magical_seams_logo_dark.png",
     thumbnail: {
-      type: "image",
-      imagePath: "../assets/images/design/magical_seams_logo_thumb.png"
+      type: "flip-image",
+      frontImagePath: "../assets/images/design/magical_seams_logo_thumb.jpg",
+      backImagePath: "../assets/images/design/magical_seams_logo_dark_thumb.png"
     },
     thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
     "pieceTitle": "Magical Seams Logo",
@@ -92,25 +94,24 @@ const images: imageData[] = [
     "maxWidth": "",
     "caption": ""
   },
-  {
-    src: "../assets/images/design/cjllogo.png",
-    thumbnail: {
-      type: "image",
-      imagePath: "../assets/images/design/cjllogo_thumb.png"
-    },
-    thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
-    "pieceTitle": "Climate Justice League Logo",
-    "broadCategory": "graphic_design",
-    "specificType": "logo",
-    "qualityRating": 2,
-    "creationDate": 2010,
-    "active": true,
-    "idealWidth": "",
-    "idealHeight": "",
-    "minWidth": "",
-    "maxWidth": "",
-    "caption": ""
-  },
+  // {
+  //   src: "../assets/images/design/cjllogo.png",
+  //   thumbnail: {
+  //     type: "image",
+  //     imagePath: "../assets/images/design/cjllogo_thumb.png"
+  //   },
+  //   "pieceTitle": "Climate Justice League Logo",
+  //   "broadCategory": "graphic_desgin",
+  //   "specificType": "logo",
+  //   "qualityRating": 2,
+  //   "creationDate": 2010,
+  //   "active": false,
+  //   "idealWidth": "",
+  //   "idealHeight": "",
+  //   "minWidth": "",
+  //   "maxWidth": "",
+  //   "caption": ""
+  // },
   {
     src: "../assets/images/design/kaelidescope_poster.jpg",
     thumbnail: {

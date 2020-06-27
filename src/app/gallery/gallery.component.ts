@@ -57,8 +57,29 @@ export class GalleryComponent implements OnInit {
   selectedTypeValue: string = ''
   currentCategoryTypes: Array<Type> = null
 
+  // masonryAnimations = {
+  //   show: [
+  //     style({opacity: 0}),
+  //     animate('400ms ease-in', style({opacity: 1})),
+  //   ],
+  //   hide: [
+  //     style({opacity: '*'}),
+  //     animate('400ms ease-in', style({opacity: 0})),
+  //   ]
+  // }
+
   public masonryOptions: NgxMasonryOptions = {
-    fitWidth: true
+    fitWidth: true,
+    // animations: {
+    //   show: [
+    //     style({opacity: 0}),
+    //     animate('400ms ease-in', style({opacity: 1})),
+    //   ],
+    //   hide: [
+    //     style({opacity: '*'}),
+    //     animate('400ms ease-in', style({opacity: 0})),
+    //   ]
+    // }
   };
 
   constructor(public galleryManager: GalleryService, private _lightbox: Lightbox) {
@@ -81,10 +102,10 @@ export class GalleryComponent implements OnInit {
     if (this.selectedCategoryValue) {
       images = images.filter(image => image.broadCategory == this.selectedCategoryValue)
       if (this.selectedTypeValue) {
-        images = images.filter(image => image.specificType == this.selectedTypeValue) 
+        images = images.filter(image => image.specificType == this.selectedTypeValue)
       }
     }
-    
+
     this.galleryContent = images
   }
 
