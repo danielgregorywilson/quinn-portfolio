@@ -5,9 +5,18 @@
 <div class="filters">
   <mat-form-field>
     <mat-label>Category</mat-label>
-    <mat-select [(value)]="selectedCategoryValue" (selectionChange)="filterAndSortImages()">
+    <mat-select [(value)]="selectedCategoryValue" (selectionChange)="onSetCategory($event)">
       <mat-option *ngFor="let category of categories" [value]="category.value">
         {{ category.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select [(value)]="selectedTypeValue" (selectionChange)="filterAndSortImages()">
+      <mat-option *ngFor="let type of currentCategoryTypes" [value]="type.value">
+        {{ type.viewValue }}
       </mat-option>
     </mat-select>
   </mat-form-field>

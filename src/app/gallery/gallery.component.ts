@@ -6,6 +6,12 @@ import { NgxMasonryOptions } from 'ngx-masonry';
 interface Category {
   value: string;
   viewValue: string;
+  types?: Array<Type>
+}
+
+interface Type {
+  value: string;
+  viewValue: string;
 }
 
 @Component({
@@ -20,13 +26,36 @@ export class GalleryComponent implements OnInit {
 
   categories: Category[] = [
     {value: '', viewValue: 'None'},
-    {value: 'graphic_design', viewValue: 'Graphic Design'},
-    {value: 'fine_art', viewValue: 'Fine Art'},
-    {value: 'illustration', viewValue: 'Illustration'},
-    {value: 'photography', viewValue: 'Photography'}
+    {value: 'graphic_design', viewValue: 'Graphic Design', types:[
+      {value: '', viewValue: 'None'},
+      {value: 'business_card', viewValue: 'Business Card'},
+      {value: 'logo', viewValue: 'Logo'},
+      {value: 'poster', viewValue: 'Poster'},
+      {value: 'ticket', viewValue: 'Ticket'},
+      {value: 'magazine_article', viewValue: 'Magazine Article'},
+    ]},
+    {value: 'fine_art', viewValue: 'Fine Art', types:[
+      {value: '', viewValue: 'None'},
+      {value: 'quilt', viewValue: 'Quilt'},
+      {value: 'digital_painting', viewValue: 'Digital Painting'},
+      {value: 'acrylic_painting', viewValue: 'Acrylic Painting'},
+      {value: 'watercolor_painting', viewValue: 'Watercolor Painting'},
+    ]},
+    {value: 'illustration', viewValue: 'Illustration', types:[
+      {value: '', viewValue: 'None'},
+      {value: 'digital_illustration', viewValue: 'Digital Illustration'},
+      {value: 'watercolor_painting', viewValue: 'Watercolor Painting'},
+    ]},
+    {value: 'photography', viewValue: 'Photography', types:[
+      {value: '', viewValue: 'None'},
+      {value: 'human_photography', viewValue: 'Human Photography'},
+      {value: 'nature_photography', viewValue: 'Nature Photography'},
+    ]}
   ]
 
   selectedCategoryValue: string = ''
+  selectedTypeValue: string = ''
+  currentCategoryTypes: Array<Type> = null
 
   public masonryOptions: NgxMasonryOptions = {
     fitWidth: true
@@ -37,6 +66,13 @@ export class GalleryComponent implements OnInit {
     console.log(this.galleryContent);
   }
 
+  onSetCategory(event) {
+    const categoryValue = event.value
+    this.selectedTypeValue = ''
+    this.currentCategoryTypes = this.categories.filter(category => category.value == categoryValue)[0].types
+    this.filterAndSortImages()
+  }
+
   filterAndSortImages() {
       // .filter(image => image.pieceTitle.toLowerCase().includes(query))
       // .sort((a, b) => a.pieceTitle === b.pieceTitle ? 0 : a.pieceTitle < b.pieceTitle ? -1 : 1);
@@ -44,6 +80,9 @@ export class GalleryComponent implements OnInit {
     let images = this.galleryManager.images
     if (this.selectedCategoryValue) {
       images = images.filter(image => image.broadCategory == this.selectedCategoryValue)
+      if (this.selectedTypeValue) {
+        images = images.filter(image => image.specificType == this.selectedTypeValue) 
+      }
     }
     
     this.galleryContent = images
