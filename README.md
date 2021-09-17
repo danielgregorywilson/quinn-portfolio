@@ -1,3 +1,7 @@
+# Set up
+run `npm install`
+Install the Angular CLI if you don't have it
+
 # Portfolio3
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.

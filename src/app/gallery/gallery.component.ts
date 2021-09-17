@@ -25,9 +25,9 @@ export class GalleryComponent implements OnInit {
   galleryContent: imageData[] | null = null;
 
   categories: Category[] = [
-    {value: '', viewValue: 'None'},
+    {value: '', viewValue: 'All'},
     {value: 'graphic_design', viewValue: 'Graphic Design', types:[
-      {value: '', viewValue: 'None'},
+      {value: '', viewValue: 'All'},
       {value: 'business_card', viewValue: 'Business Card'},
       {value: 'logo', viewValue: 'Logo'},
       {value: 'poster', viewValue: 'Poster'},
@@ -35,19 +35,19 @@ export class GalleryComponent implements OnInit {
       {value: 'magazine_article', viewValue: 'Magazine Article'},
     ]},
     {value: 'fine_art', viewValue: 'Fine Art', types:[
-      {value: '', viewValue: 'None'},
+      {value: '', viewValue: 'All'},
       {value: 'quilt', viewValue: 'Quilt'},
       {value: 'digital_painting', viewValue: 'Digital Painting'},
       {value: 'acrylic_painting', viewValue: 'Acrylic Painting'},
       {value: 'watercolor_painting', viewValue: 'Watercolor Painting'},
     ]},
     {value: 'illustration', viewValue: 'Illustration', types:[
-      {value: '', viewValue: 'None'},
+      {value: '', viewValue: 'All'},
       {value: 'digital_illustration', viewValue: 'Digital Illustration'},
       {value: 'watercolor_painting', viewValue: 'Watercolor Painting'},
     ]},
     {value: 'photography', viewValue: 'Photography', types:[
-      {value: '', viewValue: 'None'},
+      {value: '', viewValue: 'All'},
       {value: 'human_photography', viewValue: 'Human Photography'},
       {value: 'nature_photography', viewValue: 'Nature Photography'},
     ]}

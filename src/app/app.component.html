@@ -1,32 +1,43 @@
 <div class="container dark">
   <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <header id="main">
-    <img class="logo" alt="Quinn River Rose Logo" src="assets/images/site/quinn_logo_temp_lightondark.svg" />
-
-    <h1>
-      Quinn River Rose Wilson
-      <hr>
-    </h1>
-
-    <nav>
-      <div class="secondaryNav">
-        <a>
-          About
-        </a>
-        <a>
-          Contact
-        </a>
-        <a>
-          Prints
-        </a>
+  <div style="text-align:center">
+    <header id="main">
+      <div id="header-container">
+        <img class="logo" alt="Quinn River Rose Logo" src="assets/images/site/quinn_logo_temp_lightondark.svg" />
+        <h1 id="header">
+          uinn River Rose Wilson
+          <hr>
+        </h1>
       </div>
-    </nav>
-  </header>
-</div>
-<!-- Page Content -->
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
-<h2>Here are some links to help you start: </h2>
+
+      <div id="header-container-mobile">
+        <img class="logo" alt="Quinn River Rose Logo" src="assets/images/site/quinn_logo_temp_lightondark.svg" />
+        <h1 id="header">
+          Quinn River Rose Wilson
+          <hr>
+        </h1>
+      </div>
+
+      <nav>
+        <!--
+        <div class="secondaryNav">
+          <a>
+            About
+          </a>
+          <a>
+            Contact
+          </a>
+          <a>
+            Prints
+          </a>
+        </div>
+        -->
+      </nav>
+    </header>
+  </div>
+  <!-- Page Content -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <h2>Here are some links to help you start: </h2>
 </div>

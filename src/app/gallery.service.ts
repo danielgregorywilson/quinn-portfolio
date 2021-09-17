@@ -306,8 +306,8 @@ const images: imageData[] = [
     },
     thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
     "pieceTitle": "Ginger Tea",
-    "broadCategory": "illustration",
-    "specificType": "digital_illustration",
+    "broadCategory": "graphic_design",
+    "specificType": "poster",
     "qualityRating": 4,
     "creationDate": 2013,
     "active": true,
@@ -325,8 +325,8 @@ const images: imageData[] = [
     },
     thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
     "pieceTitle": "Imagine",
-    "broadCategory": "illustration",
-    "specificType": "digital_illustration",
+    "broadCategory": "graphic_design",
+    "specificType": "poster",
     "qualityRating": 4,
     "creationDate": 2012,
     "active": true,
@@ -415,10 +415,11 @@ const images: imageData[] = [
   {
     src: "../assets/images/art/oregon_boat.png",
     thumbnail: {
-      type: "image",
-      imagePath: "../assets/images/art/oregon_boat_thumb.png"
+      type: "flip-image",
+      frontImagePath: "../assets/images/art/boat_thumb.png",
+      backImagePath: "../assets/images/art/oregon_boat_thumb.png"
     },
-    thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
+    thumb: "../assets/images/design/boat_thumb.png",
     "pieceTitle": "Boat",
     "broadCategory": "illustration",
     "specificType": "digital_illustration",
@@ -470,25 +471,6 @@ const images: imageData[] = [
     "caption": ""
   },
   {
-    src: "../assets/images/art/boat.png",
-    thumbnail: {
-      type: "image",
-      imagePath: "../assets/images/art/boat_thumb.png"
-    },
-    thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
-    "pieceTitle": "Boat",
-    "broadCategory": "illustration",
-    "specificType": "digital_illustration",
-    "qualityRating": 4,
-    "creationDate": 2017,
-    "active": true,
-    "idealWidth": "",
-    "idealHeight": "",
-    "minWidth": "",
-    "maxWidth": "",
-    "caption": ""
-  },
-  {
     src: "../assets/images/design/renewCycle.png",
     thumbnail: {
       type: "image",
@@ -496,8 +478,8 @@ const images: imageData[] = [
     },
     thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
     "pieceTitle": "Renewcycle",
-    "broadCategory": "illustration",
-    "specificType": "digital_illustration",
+    "broadCategory": "graphic_design",
+    "specificType": "poster",
     "qualityRating": 4,
     "creationDate": 2011,
     "active": true,
@@ -513,8 +495,8 @@ const images: imageData[] = [
       type: "image",
       imagePath: "../assets/images/design/pisgahSilo_thumb.jpg"
     },
-    thumb: "../assets/images/design/tuibSmallBlue_thumb.png",
-    "pieceTitle": "Boat",
+    thumb: "../assets/images/design/pisgahSilo.jpg",
+    "pieceTitle": "Silo",
     "broadCategory": "illustration",
     "specificType": "watercolor_painting",
     "qualityRating": 4,

@@ -1,6 +1,12 @@
+// Material Theming
+@import '~@angular/material/theming';
+@include mat-core();
+@import 'quinn-site-theme.scss';
+
 body {
   padding: 0;
   margin: 0;
+  @include angular-material-theme($quinn-site-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -98,13 +104,42 @@ div.masonryGrid{
     }
 }
 
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    img.logo {
-        height: 75px;
+// Hide/show headers at breakpoints
+@media screen and (min-width: 0px) and (max-width: 580px) {
+  #header-container { display: none; }  /* hide header on small screens */
+}
+@media screen and (min-width: 581px) {
+  #header-container-mobile { display: none !important; }   /* hide mobile header on large screens */
+}
+
+#header-container {
+  img.logo {
+    height: 75px;
+    padding-right: 3px;
+  }
+  h1#header {
+    font-size: 48px;
+  }
+}
+
+#header-container-mobile {
+  display: flex;
+  flex-direction: column;
+  img.logo {
+    height: 200px;
+    padding-bottom: 10px;
+  }
+  h1#header {
+    font-size: 24px;
+    hr {
+      display: none;
     }
+  }
+}
+
+header {
+    padding-top: 30px;
+    margin-bottom: -30px;
 }
 
 :root {
@@ -149,7 +184,32 @@ header {
     }
 }
 
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: white !important;
+}
+
+.mat-primary {
+  color: white !important;
+}
+
 // GALLERY
+
+#filters-container {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+  background-color: #000;
+  padding-top: 1.25em;
+
+  .filters {
+    .filter-label {
+      font-family: 'Life Savers', cursive;
+      font-size: 18px;
+    }
+  }
+}
 
 .masonry-item {
     line-height: 0;
