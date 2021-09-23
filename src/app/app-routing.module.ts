@@ -25,7 +25,7 @@ const portfolio_routes: Routes = [
 
 @NgModule({
   exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(portfolio_routes) ],
+  imports: [ RouterModule.forRoot(portfolio_routes, { relativeLinkResolution: 'legacy' }) ],
 })
 
 export class AppRoutingModule {
