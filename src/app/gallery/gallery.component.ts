@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {GalleryService, imageData} from '../gallery.service';
 import { Lightbox } from 'ngx-lightbox';
 import { NgxMasonryOptions } from 'ngx-masonry';
@@ -23,6 +24,8 @@ interface Type {
 export class GalleryComponent implements OnInit {
 
   galleryContent: imageData[] | null = null;
+
+  cats = ['graphic_design', 'fine_art']
 
   categories: Category[] = [
     {value: '', viewValue: 'All'},
@@ -82,13 +85,13 @@ export class GalleryComponent implements OnInit {
     // }
   };
 
-  constructor(public galleryManager: GalleryService, private _lightbox: Lightbox) {
+  constructor(public galleryManager: GalleryService, private _lightbox: Lightbox, public router: Router) {
     this.filterAndSortImages();
     console.log(this.galleryContent);
   }
 
-  onSetCategory(event) {
-    const categoryValue = event.value
+  onSetCategory(category) {
+    const categoryValue = category.value
     this.selectedTypeValue = ''
     this.currentCategoryTypes = this.categories.filter(category => category.value == categoryValue)[0].types
     this.filterAndSortImages()

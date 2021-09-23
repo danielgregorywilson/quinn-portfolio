@@ -1,3 +1,12 @@
+<nav mat-tab-nav-bar mat-align-tabs="center">
+  <a mat-tab-link *ngFor="let category of categories"
+     (click)="selectedCategoryValue = category.value; onSetCategory(category)"
+     [active]="selectedCategoryValue == category.value">{{category.viewValue}}</a>
+  <a mat-tab-link
+     (click)="this.router.navigate(['contact']);">Contact</a>
+</nav>
+
+<!--
 <div id="filters-container">
   <div class="filters">
     <mat-form-field>
@@ -19,6 +28,7 @@
     </mat-form-field>
   </div>
 </div>
+-->
 
 <div class="masonryGrid">
   <ngx-masonry [options]="masonryOptions">
