@@ -2,6 +2,13 @@
 run `npm install`
 Install the Angular CLI if you don't have it
 
+# Deploy
+`ng build --configuration production`
+Navigate to https://s3.console.aws.amazon.com/s3/buckets/quinnriverrose.com
+Under the 'Objects' tab is the list of files
+Drag the contents of dist/portfolio3 *EXCEPT ASSETS* to the window to upload the build
+Then make an invalidation for '/*' here to reset the CDN cache: https://console.aws.amazon.com/cloudfront/v3/home?region=us-west-2#/distributions/E17XT7M57G45TV/invalidations
+
 # Portfolio3
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
