@@ -11,6 +11,7 @@ import { ImageThumbnail } from './pipes/image-thumbnail.pipe';
 import { LightboxModule } from 'ngx-lightbox';
 import { NgxMasonryModule } from 'ngx-masonry';
 
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     BrowserModule,
     LightboxModule,
+    MatTabsModule,
     MatSelectModule,
     NgxMasonryModule
   ],
